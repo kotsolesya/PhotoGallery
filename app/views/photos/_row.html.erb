@@ -1,0 +1,12 @@
+<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+  <div class="col-md-9">
+    <h3><%= photo.title %></h3>
+    <%= link_to '', photo.title, class: 'link' %>
+  </div>
+  <div class="col-md-3">
+
+    <span style="float: right"><%= link_to 'Edit', edit_photo_path(photo) %> <%= link_to '✕', photo_path(photo), method: :delete, remote: true, class: 'delete_post' %></span>
+
+  </div>
+  <img src='<%= photo.picture_url %>' class="img-responsive"/>
+</div>

@@ -1,0 +1,4 @@
+<%= image_tag @photo.picture_url if @photo.picture.present? %> <br>
+<%= @photo.title %>
+<%= @photo.description %>
+<%= link_to 'Edit', edit_photo_path(@photo) %>
