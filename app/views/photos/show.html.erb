@@ -1,4 +1,9 @@
-<%= image_tag @photo.picture_url if @photo.picture.present? %> <br>
+<%= image_tag @photo.picture_url(:thumb) if @photo.picture.present?%> <br>
 <%= @photo.title %>
 <%= @photo.description %>
-<%= link_to 'Edit', edit_photo_path(@photo) %>
+<p>
+  <%= link_to @album.title, @album %>
+  /
+  <%= @photo.title %>
+</p>
+<%= link_to 'Edit', edit_album_photo_path(@album, @photo) %>
