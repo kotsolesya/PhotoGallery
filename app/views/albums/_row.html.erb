@@ -5,7 +5,7 @@
   </div>
   <div class="col-md-3">
 
-    <span style="float: right"><%= link_to 'Edit', edit_album_photo_path(photo) %> <%= link_to '✕', album_photo_path(photo), method: :delete, remote: true, class: 'delete_post' %></span>
+    <span style="float: right"><%= link_to 'Edit', edit_album_photo_path(@album, photo) %> <%= link_to '✕', album_photo_path(@album, photo), method: :delete, remote: true, class: 'delete_post' %></span>
 
   </div>
   <%= image_tag photo.picture_url(:thumb) %>

@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
   def create
     @photo = @album.photos.new(photo_params)
     if @photo.save
-      redirect_to :show
+      redirect_to @album
     else
       render :new
     end
@@ -28,15 +28,15 @@ class PhotosController < ApplicationController
   end
 
   def update
-    if @photo.update_attributes params[:photo]
-      redirect_to :show
+    if @photo.update_attributes(photo_params)
+      render :show
     else
       render :edit
     end
   end
 
   def destroy
-     @photo.destroy
+    @photo.destroy
   end
 
   private

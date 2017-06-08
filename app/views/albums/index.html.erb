@@ -7,6 +7,7 @@
     <div class="col-md-9">
       <h3><%= album.title %></h3>
       <%= link_to album.title, album_path(album), class: 'link' %>
+        <%= image_tag album.photos.last.picture_url(:thumb) %>
     </div>
     <div class="col-md-3">
 
