@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
+gem 'pry-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'pg'
@@ -12,6 +12,7 @@ gem 'carrierwave'
 gem 'rails', '~> 5.0.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem "jquery-fileupload-rails"
 gem 'puma', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'mini_magick', '3.8.0'

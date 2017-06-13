@@ -1,0 +1,8 @@
+<div id="photo_<%= photo.id %>" class="photo">
+  <%= link_to image_tag(photo.picture_url(:thumb)), album_photo_path(@album, photo)%>
+  <div class="name"><%= photo.title %></div>
+  <div class="actions">
+      <%= link_to 'Edit', edit_album_photo_path(@album, photo) %> |
+      <%= link_to "Remove", album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete, remote: true %>
+  </div>
+</div>

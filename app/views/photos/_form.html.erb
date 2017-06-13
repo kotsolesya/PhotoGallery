@@ -1,4 +1,4 @@
-<%= form_for [@album, @photo], html: { :multipart => true } do |f| %>
+<%= form_for [@album, @photo], remote: true, authenticity_token: true do |f| %>
 
   <div class="field">
     <%= f.label :title %> <br>
@@ -11,6 +11,7 @@
   <div class="field">
     <%= f.label :picture %> <br>
     <%= f.file_field :picture, id: :photo_picture %>
+
   </div>
   <div class="actions">
     <%= f.submit %>

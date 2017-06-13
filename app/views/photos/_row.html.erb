@@ -1,12 +1,9 @@
-<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
-  <div class="col-md-9">
-    <h3><%= photo.title %></h3>
-    <%= link_to '', photo.title, class: 'link' %>
-  </div>
-  <div class="col-md-3">
-
-    <span style="float: right"><%= link_to 'Edit', edit_album_photo_path(photo) %> <%= link_to '✕', photo_path(photo), method: :delete, remote: true, class: 'delete_post' %></span>
+<div class="photo">
+  <%= link_to image_tag(photo.picture_url(:thumb)) , album_photo_path(photo)%>
+  <div class="name"><%= photo.title %></div>
+  <div class="actions">
+    <%= link_to "edit", edit_album_photo_path(photo) %> |
+    <%= link_to "remove", album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete %>
 
   </div>
-  <img src='<%= photo.picture_url %>' class="img-responsive"/>
 </div>

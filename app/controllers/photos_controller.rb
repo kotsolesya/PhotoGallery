@@ -1,8 +1,8 @@
 class PhotosController < ApplicationController
   before_action :set_album
-  before_action :set_photo, only: [ :update, :edit, :destroy]
+  before_action :set_photo, only: [:show, :update, :edit, :destroy]
   def index
-    #@photos = Photo.all
+    # @photos = Photo.all
     @photos = @album.photos.all
   end
 
@@ -12,24 +12,12 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = @album.photos.new(photo_params)
-    if @photo.save
-      redirect_to @album
-    else
-      render :new
-    end
-  end
-
-  def show
-    @photo = @album.photos.find params[:id]
-  end
-
-  def edit
+    @photo = @album.photos.create(photo_params)
   end
 
   def update
     if @photo.update_attributes(photo_params)
-      render :show
+      redirect_to @album
     else
       render :edit
     end
@@ -42,7 +30,6 @@ class PhotosController < ApplicationController
   private
 
   def set_photo
-    # @photo = Photo.find params[:id]
     @photo ||= @album.photos.find params[:id]
   end
 

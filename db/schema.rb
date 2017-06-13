@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170603144353) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "picture"
+    t.text     "picture"
     t.integer  "album_id"
   end
 
