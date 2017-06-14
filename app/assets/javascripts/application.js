@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require src/js/jquery.swipebox.js
 //= require bootstrap-sprockets
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
