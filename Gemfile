@@ -17,6 +17,7 @@ gem 'puma', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'mini_magick', '3.8.0'
 gem 'sass-rails', '~> 5.0'
+gem 'will_paginate', '~> 3.1.0'
 # gem 'sqlite3'
 
 gem 'turbolinks', '~> 5'

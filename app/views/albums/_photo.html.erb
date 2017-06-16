@@ -1,11 +1,16 @@
 <div id="photo_<%= photo.id %>" class="photo">
 
     <%= link_to photo.picture_url, :class => 'swipebox' do %>
-     <%= image_tag(photo.picture_url(:thumb)) %>
-     <% end %>
-     <div class="name"><%= photo.title %></div>
-     <div class="actions">
-         <%= link_to 'Edit', edit_album_photo_path(@album, photo) %> |
-         <%= link_to "Remove", album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete, remote: true %>
-     </div>
+    <%= image_tag(photo.picture_url(:thumb)) %>
+    <% end %>
+    <div class="name"><%= photo.title %></div>
+
+    <% if user_signed_in? %>
+      <div class="actions">
+          <%= link_to 'Edit', edit_album_photo_path(@album, photo) %>
+          |
+          <%= link_to "Remove", album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete, remote: true %>
+      </div>
+    <% end %>
+
 </div>

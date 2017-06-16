@@ -1,8 +1,11 @@
 class AlbumsController < ApplicationController
-
   def index
-    #@photos = Photo.all
     @albums = Album.all
+    if params[:search]
+      @albums = Album.search(params[:search]).paginate(page: params[:page])
+    else
+      @albums = Album.paginate(page: params[:page]).order('created_at DESC')
+    end
   end
 
   def new

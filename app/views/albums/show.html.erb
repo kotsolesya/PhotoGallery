@@ -1,16 +1,6 @@
 <h1><%= @album.title %></h1>
-
-<p><%= link_to 'Upload new photo', new_album_photo_path(@album) %></p>
-
-<div id="photos">
-    <% @album.photos.each do |photo| %>
-    <%= link_to [@album, photo] do %>
-    <%= render 'photo', photo: photo %>
-    <% end %>
-    <% end %>
-
-</div>
-<div class="clear"></div>
+<% if user_signed_in? %>
+  <p><%= link_to 'Upload new one photo', new_album_photo_path(@album) %></p>
 
 <%= form_for :photos, :html => { id: 'new_photo', :multipart => true },
              url:    album_photos_path(@album, Photo.new), authenticity_token: true,
@@ -28,3 +18,13 @@
         </div>
     </div>
 </script>
+
+<% end %>
+
+<div id="photos">
+  <% @album.photos.each do |photo| %>
+  <%= link_to [@album, photo] do %>
+  <%= render 'photo', photo: photo %>
+  <% end %>
+  <% end %>
+</div>
