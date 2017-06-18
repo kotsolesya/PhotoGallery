@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :set_album, only: %i[show update edit destroy]
+
   def index
     @albums = Album.all
     if params[:search]
@@ -24,17 +26,33 @@ class AlbumsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+
+  end
+
+  def update
+    if @photo.update_attributes(photo_params)
+      redirect_to @album
+    else
+      render :edit
+    end
+  end
 
   def show
-    @album = Album.find params[:id]
+  #  @album = Album.find params[:id]
   end
 
   def destroy
-    @album = Album.find params[:id]
+  #  @album = Album.find params[:id]
     @album.destroy
   end
 
   private
+
+  def set_album
+    @album ||= Album.find params[:id]
+  end
 
   def album_params
     params.require(:album).permit(:title)

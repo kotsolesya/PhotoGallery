@@ -1,12 +1,40 @@
 <h1>All Albums</h1>
+
+<%= render 'search_results'%>
+
+<div class="work">
+    <div class="category-buttons">
+        <a href="#" class="active all" data-group="all">All</a>
+        <a href="#" data-group="city">city</a>
+        <a href="#" data-group="nature">nature</a>
+        <a href="#" data-group="food">food</a>
+        <a href="#" data-group="sports">sports</a>
+        <a href="#" data-group="people">people</a>
+    </div>
+
+    <div id="grid" class="grid">
+
+        <% @albums.each do |album| %>
+        <div id="album_<%= album.id %>" class="album">
+            <%= link_to(album_path(album), class: "card", :"data-groups" => "city,") do %>
+            <%= image_tag album.title_photo %>
+            <div class="title"><%= album.title %>
+            </div>
+            <% end %>
+            <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_album_path(album) %>
+            <%= link_to '✕', album_path(album), method: :delete, remote: true, class: 'delete_post' %>
+
+            <% end %>
+
+        </div>
+        <% end %>
+
+    </div>
+
+    <div class="guide"></div>
+</div>
+
 <div >
-    <%= render 'search_results'%>
-
-    <div id="feed">
-        <%= render @albums %>
-    </div>
-
-    <div id="infinite-scrolling">
-        <%= will_paginate @albums %>
-    </div>
+    <%= will_paginate @albums %>
 </div>

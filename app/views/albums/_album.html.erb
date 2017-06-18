@@ -1,15 +1,19 @@
+<div id="album_<%= album.id %>" class="album">
 
-<div >
-    <div class="col-md-9">
-        <h3><%= link_to album.title, album_path(album)  %></h3>
-        <%= link_to album_path(album) do %>
-        <%= image_tag album.title_photo %>
-        <%end %>
-    </div>
-    <% if user_signed_in? %>
-    <div class="col-md-3">
-        <span style="float: right"><%= link_to 'Edit', edit_album_path(album) %>
-            <%= link_to '✕', album_path(album), method: :delete, remote: true, class: 'delete_post' %></span>
-    </div>
+  <% @albums.each do |album| %>
+
+    <%= link_to(album_path(album), class: "card", :"data-groups" => "city,") do %>
+      <%= image_tag album.title_photo %>
+      <div class="title"><%= album.title %></div>
     <% end %>
+  <% end %>
+    <% if user_signed_in? %>
+    <span style="float: right"><%= link_to 'Edit', edit_album_path(album) %>
+      <%= link_to '✕', album_path(album), method: :delete, remote: true, class: 'delete_post' %></span>
+      <% end %>
+    </div>
+
+
+
+
 </div>
