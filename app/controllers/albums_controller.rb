@@ -6,6 +6,10 @@ class AlbumsController < ApplicationController
     else
       @albums = Album.paginate(page: params[:page]).order('created_at DESC')
     end
+    respond_to do |format|
+      format.html
+      format.js { render 'album_page' }
+    end
   end
 
   def new
@@ -23,6 +27,11 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find params[:id]
+  end
+
+  def destroy
+    @album = Album.find params[:id]
+    @album.destroy
   end
 
   private
