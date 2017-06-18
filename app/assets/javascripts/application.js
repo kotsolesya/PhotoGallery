@@ -17,4 +17,5 @@
 //= require bootstrap-sprockets
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require jquery.facedetection.min.js
 //= require_tree .

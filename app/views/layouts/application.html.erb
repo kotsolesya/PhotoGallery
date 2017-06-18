@@ -33,7 +33,7 @@
                         </li>
                         <% end %>
                         <li >
-                            <%= link_to "About", albums_path, :class => 'navbar-link'  %>
+                            <%= link_to "About", about_index_path, :class => 'navbar-link'  %>
                         </li>
                     </ul>
                     <p class="navbar-text pull-right">
@@ -64,9 +64,14 @@
             <%= yield %>
         </div>
     </body>
+
     <footer>
-        <div class="container">
-            Ruby on Rails #Softgroup 2017
-        </div>
-    </footer>
-</html>
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text pull-left">
+                    Ruby on Rails #Softgroup 2017
+                </p>
+            </div>
+        </footer>
+
+    </html>
