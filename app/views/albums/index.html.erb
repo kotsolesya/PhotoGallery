@@ -1,40 +1,40 @@
-<h1>All Albums</h1>
-
 <%= render 'search_results'%>
 
-<div class="work">
-    <div class="category-buttons">
-        <a href="#" class="active all" data-group="all">All</a>
-        <a href="#" data-group="city">city</a>
-        <a href="#" data-group="nature">nature</a>
-        <a href="#" data-group="food">food</a>
-        <a href="#" data-group="sports">sports</a>
-        <a href="#" data-group="people">people</a>
+<div class="container">
+    <div class="row">
+        <h2 class="text-center">All Albums
+        </h2>
+        <hr/>
     </div>
-
-    <div id="grid" class="grid">
+    <div class="row">
 
         <% @albums.each do |album| %>
-        <div id="album_<%= album.id %>" class="album">
-            <%= link_to(album_path(album), class: "card", :"data-groups" => "city,") do %>
-            <%= image_tag album.title_photo %>
-            <div class="title"><%= album.title %>
+
+        <div id="album_<%= album.id %>" class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <h4>
+                    <% if user_signed_in? %>
+                    <span class="label label-info info">
+                        <span data-toggle="tooltip" title="viewed"><%= link_to 'Edit', edit_album_path(album) %>
+                        </span>
+                        <span data-toggle="tooltip" title="viewed"><%= link_to '✕', album_path(album), method: :delete, remote: true, class: 'delete_post' %>
+                        </span>
+                    </span>
+                    <% end %>
+                </h4>
+                <%= link_to(album_path(album)) do %>
+                  <%= image_tag album.title_photo %>
+                <% end %>
+                <p><%= album.title.capitalize %></p>
+                <div class="clearfix"></div>
             </div>
-            <% end %>
-            <% if user_signed_in? %>
-            <%= link_to 'Edit', edit_album_path(album) %>
-            <%= link_to '✕', album_path(album), method: :delete, remote: true, class: 'delete_post' %>
-
-            <% end %>
-
         </div>
         <% end %>
 
     </div>
 
-    <div class="guide"></div>
 </div>
 
-<div >
-    <%= will_paginate @albums %>
-</div>
+<center>
+    <%= will_paginate @albums, renderer: BootstrapPagination::Rails %>
+</center>

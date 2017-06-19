@@ -1,7 +1,16 @@
-<%= form_tag(albums_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Album" %>
-  <%= submit_tag "Search" %>
-<% end %>
-<% unless @albums.present? %>
-  <p>There are no album containing the term(s) <%= params[:search] %>.</p>
-<% end %>
+<div class="row">
+    <%= form_tag(albums_path, :method => "get", class: 'form-inline',id: "search-form") do %>
+    <div class="form-group">
+        <%= text_field_tag :search, params[:search], placeholder: "Search Album", class: "form-control" %>
+        <%= submit_tag "Search", class: "btn btn-default"%>
+    </div>
+    <% end %>
+    <% unless @albums.present? %>
+
+    <div class="alert alert-danger" role="alert">
+
+        <p>There are no album containing the term(s)
+            <%= params[:search] %>.</p>
+    </div>
+    <% end %>
+</div>

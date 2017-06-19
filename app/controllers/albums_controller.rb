@@ -26,13 +26,13 @@ class AlbumsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
 
   end
 
   def update
-    if @photo.update_attributes(photo_params)
+    if @album.update_attributes(album_params)
       redirect_to @album
     else
       render :edit

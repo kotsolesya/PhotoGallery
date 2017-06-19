@@ -1,16 +1,20 @@
-<div id="photo_<%= photo.id %>" class="photo">
-
-    <%= link_to photo.picture_url, :class => 'swipebox' do %>
-    <%= image_tag(photo.picture_url(:thumb)) %>
-    <% end %>
-    <div class="name"><%= photo.title %></div>
-
-    <% if user_signed_in? %>
-      <div class="actions">
-          <%= link_to 'Edit', edit_album_photo_path(@album, photo) %>
-          |
-          <%= link_to "Remove", album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete, remote: true %>
-      </div>
-    <% end %>
-
+<div id="photo_<%= photo.id %>" class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <h4>
+            <%- if user_signed_in? %>
+              <div class="label label-info info">
+                  <span data-toggle="tooltip" title="viewed">
+                      <%= link_to 'Edit', edit_album_photo_path(@album, photo) %>
+                  </span>
+                  <span data-toggle="tooltip" title="viewed">
+                      <%= link_to '✕', album_photo_path(@album, photo), method: :delete, remote: true, class: 'delete_post' %>
+                  </span>
+              </div>
+            <% end %>
+        </h4>
+        <%= link_to photo.picture_url, :class => 'swipebox' do %>
+        <%= image_tag(photo.picture_url(:thumb)) %>
+        <% end %>
+        <p><%= photo.title %></p>
+    </div>
 </div>

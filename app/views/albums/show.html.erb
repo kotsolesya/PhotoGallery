@@ -1,30 +1,34 @@
-<h1><%= @album.title %></h1>
 <% if user_signed_in? %>
   <p><%= link_to 'Upload new one photo', new_album_photo_path(@album) %></p>
 
-<%= form_for :photos, :html => { id: 'new_photo', :multipart => true },
-             url:    album_photos_path(@album, Photo.new), authenticity_token: true,
-             method: :post, remote: true do |f| %>
-<div  class="field">
-    <%= f.label :picture, "Upload photos:" %>
-  <p><%= f.file_field :picture, multiple: true, name: 'photo[picture]' %></p>
-</div>
+  <%= form_for :photos, :html => { id: 'new_photo', :multipart => true },
+               url:    album_photos_path(@album, Photo.new), authenticity_token: true,
+               method: :post, remote: true do |f| %>
+  <div class="field">
+      <%= f.label :picture, "Upload photos:" %>
+      <p><%= f.file_field :picture, multiple: true, name: 'photo[picture]' %></p>
+  </div>
+  <% end %>
+
+  <script id="template-upload" type="text/x-tmpl">
+      <div class="upload">{%=o.name%}
+          <div class="progress">
+              <div class="bar" style="width: 0%"></div>
+          </div>
+      </div>
+  </script>
 <% end %>
 
-<script id="template-upload" type="text/x-tmpl">
-    <div class="upload">{%=o.name%}
-        <div class="progress">
-            <div class="bar" style="width: 0%"></div>
-        </div>
+<div class="container">
+    <div class="row">
+        <h2 class="text-center"><%= @album.title %></h2>
+        <hr/>
     </div>
-</script>
-
-<% end %>
-
-<div id="photos">
-  <% @album.photos.each do |photo| %>
-  <%= link_to [@album, photo] do %>
-  <%= render 'photo', photo: photo %>
-  <% end %>
-  <% end %>
+    <div class="row">
+        <% @album.photos.each do |photo| %>
+          <%= link_to [@album, photo] do %>
+            <%= render 'photo', photo: photo %>
+          <% end %>
+        <% end %>
+    </div>
 </div>
