@@ -1,21 +1,24 @@
-<%= form_for [@album, @photo], remote: true, authenticity_token: true do |f| %>
+<div class="row">
+    <div class="col-md-12">
 
-  <div class="field">
-    <%= f.label :title %> <br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %> <br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %> <br>
-    <%= f.file_field :picture, id: :photo_picture %>
+        <%= form_for [@album, @photo], remote: true, authenticity_token: true do |f| %>
 
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-    or
-    <%= link_to 'Cancel', album_path(@album) %>
-  </div>
-<% end %>
+        <div class="form-group">
+
+            <%= f.label :title %>
+            <br>
+            <%= f.text_field :title , class: "form-control"%>
+            <%= f.label :description %>
+            <br>
+            <%= f.text_field :description, class: "form-control" %>
+            <%= f.label :picture%>
+            <br>
+            <%= f.file_field :picture, id: :photo_picture, class: "btn btn-default btn-file"%>
+            <%= f.submit  class: "btn btn-default"%>
+            or
+            <%= link_to 'Cancel', album_path(@album), class: "btn btn-default" %>
+        </div>
+
+        <% end %>
+    </div>
+</div>

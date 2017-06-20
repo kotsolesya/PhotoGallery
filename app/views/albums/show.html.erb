@@ -6,7 +6,7 @@
                method: :post, remote: true do |f| %>
   <div class="field">
       <%= f.label :picture, "Upload photos:" %>
-      <p><%= f.file_field :picture, multiple: true, name: 'photo[picture]' %></p>
+      <p><%= f.file_field :picture, multiple: true, name: 'photo[picture]' , class: "btn btn-default btn-file"%></p>
   </div>
   <% end %>
 
@@ -24,7 +24,8 @@
         <h2 class="text-center"><%= @album.title %></h2>
         <hr/>
     </div>
-    <div class="row">
+
+    <div class="row" id="photos">
         <% @album.photos.each do |photo| %>
           <%= link_to [@album, photo] do %>
             <%= render 'photo', photo: photo %>

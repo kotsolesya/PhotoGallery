@@ -1,24 +1,7 @@
-# README
+# Final Project at Soft Group Academy for course "Ruby on Rails"
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Presentation](https://docs.google.com/presentation/d/1oZDSTk26VGDMPXe3-vfcnlpfWsmMxia_bntl6xWebvY/edit?usp=sharing)
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+2017
+contact email: kots.olesya@gmail.com

@@ -1,4 +1,6 @@
-<%= render 'search_results'%>
+<center>
+    <%= render 'search_results'%>
+</center>
 
 <div class="container">
     <div class="row">
@@ -23,7 +25,7 @@
                     <% end %>
                 </h4>
                 <%= link_to(album_path(album)) do %>
-                  <%= image_tag album.title_photo %>
+                <%= image_tag album.title_photo %>
                 <% end %>
                 <p><%= album.title.capitalize %></p>
                 <div class="clearfix"></div>
